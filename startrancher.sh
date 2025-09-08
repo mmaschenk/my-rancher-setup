@@ -31,7 +31,27 @@ done
 password=$(echo $MATCH| awk -F'Password: ' '{print $2}')
 
 echo "Rancher initialization complete. Go to the interface and use ${password} to log in"
-echo "Please note it may take a few minutes for the UI is fully responsive."
+echo "Please note it may take a few minutes before the UI is fully responsive."
+
+PATTERN="RDPClient: remotedialer session connected"
+count=0
+while true; do
+  # Fetch the latest logs
+  LOGS=$(docker logs "$rancherid" 2>&1)
+
+  # Search for the pattern
+  MATCH=$(echo "$LOGS" | grep --line-buffered -F "$PATTERN")
+
+  if [[ -n "$MATCH" ]]; then
+    echo "Server started!                    "
+    break
+  else
+    printf "\rWaiting for server to start. %d" $count
+    ((count++))
+    sleep 5
+  fi
+done
+
 
 echo
 echo "Now go to https://localhost:8443 and login with the password above."
