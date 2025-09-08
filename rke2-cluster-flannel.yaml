@@ -1,19 +1,19 @@
 apiVersion: provisioning.cattle.io/v1
 kind: Cluster
 metadata:
-  name: test-flannel
+  name: test-calico
   namespace: fleet-default
 spec:
   kubernetesVersion: v1.33.3+rke2r1
   localClusterAuthEndpoint: {}
   rkeConfig:
     chartValues:
-      rke2-flannel: {}
+      rke2-calico: {}
     etcd:
       snapshotRetention: 5
       snapshotScheduleCron: 0 */5 * * *
     machineGlobalConfig:
-      cni: flannel
+      cni: calico
       disable-kube-proxy: false
       etcd-expose-metrics: false
       profile: null
