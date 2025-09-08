@@ -1,0 +1,56 @@
+apiVersion: provisioning.cattle.io/v1
+kind: Cluster
+metadata:
+  annotations:
+    field.cattle.io/creatorId: user-lmjvh
+    provisioning.cattle.io/management-cluster-display-name: test
+  creationTimestamp: '2025-09-08T14:24:30Z'
+  finalizers:
+    - wrangler.cattle.io/provisioning-cluster-remove
+    - wrangler.cattle.io/rke-cluster-remove
+    - wrangler.cattle.io/cloud-config-secret-remover
+  generation: 2
+  name: test
+  namespace: fleet-default
+  resourceVersion: '7015'
+  uid: 2fa46a8f-a060-43de-85e2-96e5951f1201
+spec:
+  kubernetesVersion: v1.33.3+rke2r1
+  localClusterAuthEndpoint: {}
+  rkeConfig:
+    chartValues:
+      rke2-canal: {}
+    dataDirectories: {}
+    etcd:
+      snapshotRetention: 5
+      snapshotScheduleCron: 0 */5 * * *
+    machineGlobalConfig:
+      cni: canal
+      disable-kube-proxy: false
+      etcd-expose-metrics: false
+    machinePoolDefaults: {}
+    machineSelectorConfig:
+      - config:
+          protect-kernel-defaults: false
+    registries: {}
+    upgradeStrategy:
+      controlPlaneConcurrency: '1'
+      controlPlaneDrainOptions:
+        deleteEmptyDirData: true
+        disableEviction: false
+        enabled: false
+        force: false
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 120
+      workerConcurrency: '1'
+      workerDrainOptions:
+        deleteEmptyDirData: true
+        disableEviction: false
+        enabled: false
+        force: false
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 120
