@@ -21,10 +21,13 @@ while true; do
     echo "$MATCH"
     exit 0
   else
-    echo ">>> Pattern not found, showing last 10 lines:"
     echo "$LOGS" | tail -n 10
-    echo ">>> Retrying in 5s..."
     echo
     sleep 5
   fi
 done
+
+
+password=$(echo $MATCH| awk -F'Password: ' '{print $2}')
+
+echo "Rancher initialization complete. Go to the interface and use ${password} to log in"
