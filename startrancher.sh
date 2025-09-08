@@ -19,7 +19,7 @@ while true; do
   if [[ -n "$MATCH" ]]; then
     echo ">>> Found pattern:"
     echo "$MATCH"
-    exit 0
+    break
   else
     echo "$LOGS" | tail -n 10
     echo
@@ -31,3 +31,7 @@ done
 password=$(echo $MATCH| awk -F'Password: ' '{print $2}')
 
 echo "Rancher initialization complete. Go to the interface and use ${password} to log in"
+
+echo
+echo "Now go to https://localhost:8443" and login with the password above."
+echo "Create an api key and run the script ./create-rke2-cluster.sh with the api-token as parameter to create a cluster."
