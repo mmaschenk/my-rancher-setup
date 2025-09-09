@@ -5,3 +5,4 @@ These tools assume that
 
 The template rke2-cluster-canal.yaml results in a working cluster
 The template rke2-cluster-calico.yaml results in a working cluster
+The template rke2-cluster-flannel.yaml results in a working cluster
