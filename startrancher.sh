@@ -61,5 +61,5 @@ done
 
 
 echo
-echo "Now go to https://localhost:8443 and login with the password above."
+echo "Now go to https://localhost and login with the password above."
 echo "Create an api key (top left screen) and run the script ./create-rke2-cluster.sh with the 'Bearer Token' as parameter to create a cluster."
