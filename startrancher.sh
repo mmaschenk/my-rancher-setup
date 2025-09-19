@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start=$(date +%s)
-rancherid=$(docker run -d --restart=unless-stopped -p 8085:80 -p 8443:443 --privileged rancher/rancher:latest)
+rancherid=$(docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:latest)
 
 echo "Started Rancher container with ID: $rancherid"
 
